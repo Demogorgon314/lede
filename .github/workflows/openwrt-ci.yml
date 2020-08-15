@@ -9,7 +9,7 @@ name: OpenWrt-CI
 
 on:
   schedule:
-#    - cron: 0 20 * * *
+    - cron: 0 20 * * *
   release:
     types: [published]
 
@@ -74,6 +74,7 @@ jobs:
           cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
           cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
           cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
+
       - name: Deliver buildinfo
         uses: actions/upload-artifact@v2
         with:
